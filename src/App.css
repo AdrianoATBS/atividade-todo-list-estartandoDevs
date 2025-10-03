@@ -1,42 +1,47 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.TodoList
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+.TodoList h1
+{
+  color: #1eceb0ff;
+  font-size: 48px;
+  margin-bottom: 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.input-container input[type="text"]
+{
+  padding: 30px;
+  width: 500px;
+  margin-bottom: 20px;
+  border: 2px solid #1eceb0ff;
+  border-radius: 10px;
+  margin-right: 40px;
+  outline: none;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-container button
+{
+  padding: 20px;
+  width:  300px;
+  background-color: #1eceb0ff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 24px;
+
+}
+.input-container button:active
+{
+  transform: scale(0.98);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.input-container button:hover
+{
+  background-color: #13b89dff;
 }
