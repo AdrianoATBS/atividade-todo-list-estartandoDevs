@@ -4,12 +4,14 @@ import { v4 as uuidv4 } from 'uuid';
 import TodoList from './components/TodoList'
 import { Routes, Route } from 'react-router-dom';
 import TarefasConcluidas from './pages/TarefasConcluidas';
+import React from 'react';
 
 type Tarefa =
 {
   id: string;
   tarefa: string
   isCompleted: boolean
+  oculto?: boolean
 }
 
 
@@ -21,6 +23,7 @@ function App() {
   });
 
   const [tarefaEditando, setTarefaEditando] = useState<Tarefa | null>(null);
+  const [mostrarOcultas, setMostrarOcultas] = React.useState(false);
 
 
   useEffect(() => {
@@ -32,7 +35,8 @@ function App() {
     const novaTarefa = {
       id: uuidv4(),
       tarefa: inputValue,
-      isCompleted: false
+      isCompleted: false,
+      oculto: false
     }
     setTarefa([...tarefa, novaTarefa]);
     setInputValue('')
@@ -80,7 +84,7 @@ function App() {
   {
     setTarefa(tarefa.map(t => {
       if (t.id === id) {
-        return { ...t, isHidden: !t.isHidden };
+        return { ...t, oculto: !t.oculto };
       }
       return t;
     }));
@@ -101,6 +105,8 @@ function App() {
         handlerSalvarEdicao={handlerSalvarEdicao}
         tarefaEditando={tarefaEditando}
         handlerOcultarTarefa={handlerOcultarTarefa}
+        mostrarOcultas={mostrarOcultas}
+        setMostrarOcultas={setMostrarOcultas}
         />
       } />
 

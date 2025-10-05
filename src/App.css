@@ -33,6 +33,7 @@
   border-radius: 10px;
   cursor: pointer;
   font-size: 24px;
+  margin-right: 10px;
 
 }
 .input-container button:active
@@ -46,7 +47,7 @@
   background-color: #13b89dff;
 }
 
-.task-list
+.tasks-list
 {
   list-style-type: none;
   padding: 0;
@@ -55,7 +56,6 @@
 
 .task-item
 {
-  width: 600px;
   display:flex;
   justify-content: space-between;
   align-items: center;
@@ -205,4 +205,27 @@
 .botao-salvar:hover
 {
   background-color: #45a049;
+}
+.botao-ocultar-container
+{
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  margin-bottom: 10px;
+}
+.botao-ocultar-container button
+{
+  padding: 20px;
+  width:  300px;
+  background-color: #1eceb0ff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  margin-right: 10px;
+}
+.botao-ocultar-container button:hover
+{
+  background-color: #13b89dff;
 }

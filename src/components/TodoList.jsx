@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import React from "react";
 
 export default function TodoList({ 
     tarefa, 
@@ -10,8 +11,11 @@ export default function TodoList({
     handlerEditarTarefa,
     handlerSalvarEdicao,
     tarefaEditando,
-    handlerOcultarTarefa
+    handlerOcultarTarefa,
+    mostrarOcultas,
+    setMostrarOcultas
 }) {
+ 
 
     return(
         <div className="TodoList">
@@ -24,6 +28,13 @@ export default function TodoList({
                     <button onClick={() => handlerAdicionaTarefa(inputValue)}>Adicionar</button>
                 )}
             </div>
+            <div className="botao-ocultar-container">
+                 <button  onClick={() => setMostrarOcultas(!mostrarOcultas)}>
+                        {mostrarOcultas ? 'Ocultar Tarefas Ocultas' : 'Mostrar Tarefas Ocultas'}
+                </button>
+                   
+            </div>
+            
             <div className="link-container">
                 <h2>Tarefas Concluídas</h2>
                 <Link className="link-botão" to="/concluidas">
@@ -32,13 +43,17 @@ export default function TodoList({
             </div>
 
             <div className="tasks-list">
-                {tarefa.map((usuario) => (
+                {tarefa.filter(t => !t.oculto || mostrarOcultas).map((usuario) => (
                     <div key={usuario.id} className="task-item">
                         <input onClick={() => handlerConcluirTask(usuario.id)} type="checkbox" checked={usuario.isCompleted} />
                         <span className={usuario.isCompleted ? 'Concluida' : ''}>{usuario.tarefa}</span>
                         <div className="grupo-botoes">
                             <button className="botao botao-excluir" onClick={() => handlerDeleteTask(usuario.id)}>Excluir</button>
-                            <button className="botao botao-ocultar" onClick={() => handlerOcultarTarefa(usuario.id)}>Ocultar</button>
+
+                            <button className="botao botao-ocultar" onClick={() => handlerOcultarTarefa(usuario.id)}>
+                                {usuario.oculto ? 'Mostrar' : 'Ocultar'}
+                            </button>
+                           
                             <button className="botao botao-editar" onClick={() => handlerEditarTarefa(usuario)}>Editar</button>
 
                         </div>
