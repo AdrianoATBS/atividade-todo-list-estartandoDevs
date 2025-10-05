@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { v4 as uuidv4 } from 'uuid';
 import TodoList from './components/TodoList'
+import { Routes, Route } from 'react-router-dom';
+import TarefasConcluidas from './pages/TarefasConcluidas';
 
 type Tarefa =
 {
@@ -12,17 +14,25 @@ type Tarefa =
 
 
 function App() {
-  const [tarefa, setTarefa] = useState<Tarefa[]>([])
   const [inputValue, setInputValue] = useState('')
+  const [tarefa, setTarefa] = useState<Tarefa[]>(() => {
+    const savedTodos = localStorage.getItem('todos');
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
 
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(tarefa));
+  }, [tarefa]);
 
+  
   function handlerAdicionaTarefa(inputValue: string) {
     const novaTarefa = {
       id: uuidv4(),
       tarefa: inputValue,
       isCompleted: false
     }
-    setTarefa([...tarefa, novaTarefa])
+    setTarefa([...tarefa, novaTarefa]);
+    setInputValue('')
   }
 
   function handlerInputChange(event: React.ChangeEvent<HTMLInputElement>)
@@ -31,8 +41,7 @@ function App() {
   }
   function handlerDeleteTarefa(id: string)
   {
-    const tarefasAtualizadas = tarefa.filter(tarefa => tarefa.id !== id)
-    setTarefa(tarefasAtualizadas)
+    setTarefa(tarefa.filter(tarefa => tarefa.id !== id));
   }
   function handlerConcluirTarefa(id: string)
   {
@@ -46,8 +55,11 @@ function App() {
   }
 
 
+
   return (
     <>
+    <Routes>
+      <Route path="/" element={
       <TodoList tarefa={tarefa} 
         handlerAdicionaTarefa={handlerAdicionaTarefa}
         handlerInputChange={handlerInputChange} 
@@ -55,6 +67,11 @@ function App() {
         handlerDeleteTask={handlerDeleteTarefa}
         handlerConcluirTask={handlerConcluirTarefa}
         />
+      } />
+
+          <Route path="/concluidas" element={<TarefasConcluidas tarefas={tarefa} />} />
+    </Routes>
+
     </>
   )
 }

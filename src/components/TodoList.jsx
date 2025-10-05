@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function TodoList({ 
     tarefa, 
     handlerAdicionaTarefa, 
@@ -12,6 +14,12 @@ export default function TodoList({
             <div className="input-container">
                 <input type="text" value={inputValue} onChange={handlerInputChange} placeholder="O que você precisa fazer? " />
                 <button onClick={() => handlerAdicionaTarefa(inputValue)}>Adicionar</button>
+            </div>
+            <div className="link-container">
+                <h2>Tarefas Concluídas</h2>
+                <Link className="link-botão" to="/concluidas">
+                    Ver Tarefas Concluídas
+                </Link>
             </div>
 
             <div className="tasks-list">

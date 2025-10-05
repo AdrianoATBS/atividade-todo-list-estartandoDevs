@@ -64,6 +64,7 @@
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: 24px;
+  margin-top:25px;
 }
 .task-item:nth-child(odd)
 {
@@ -81,7 +82,7 @@
   margin-right: 15px;
   cursor: pointer;
 }
-.concluida
+.Concluida
 {
   text-decoration: line-through;
   color: #808080ff;
@@ -96,4 +97,71 @@
   padding: 10px 15px;
   cursor: pointer;
   font-size: 18px;
+}
+.task-item button:hover
+{
+  background-color: #e04343ff;
+}
+
+.link-container
+{
+  margin-top: 30px;
+  text-align: center;
+}
+.link-container h2
+{
+  color: #1eceb0ff;
+  margin-bottom: 10px;
+}
+.link-botão
+{
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #1eceb0ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 24px;
+}
+.link-botão:hover
+{
+  background-color: #13b89dff;
+}
+
+.TarefasConcluidas
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+.TarefasConcluidas h2
+{
+  color: #1eceb0ff;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.TarefasConcluidas ul
+{
+  list-style-type: none;
+  padding: 0;
+  width: 600px;
+}
+.TarefasConcluidas li
+{
+  background-color: #000000ff;
+  color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-size: 24px;
+}
+.TarefasConcluidas li:nth-child(even)
+{
+  background-color: #1eceb0ff;
+}
+.TarefasConcluidas p
+{
+  color: #808080ff;
+  font-size: 24px;
 }
