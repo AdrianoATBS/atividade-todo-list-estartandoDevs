@@ -45,3 +45,55 @@
 {
   background-color: #13b89dff;
 }
+
+.task-list
+{
+  list-style-type: none;
+  padding: 0;
+  width: 600px;
+}
+
+.task-item
+{
+  width: 600px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 24px;
+}
+.task-item:nth-child(odd)
+{
+  background-color: #000000ff;
+}
+.task-item:nth-child(even)
+{
+  background-color: #1eceb0ff;
+}
+
+.task-item input[type="checkbox"]
+{
+  width: 24px;
+  height: 24px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.concluida
+{
+  text-decoration: line-through;
+  color: #808080ff;
+}
+
+.task-item button
+{
+  background-color: #ff4c4cff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 18px;
+}
