@@ -20,6 +20,9 @@ function App() {
     return savedTodos ? JSON.parse(savedTodos) : [];
   });
 
+  const [tarefaEditando, setTarefaEditando] = useState<Tarefa | null>(null);
+
+
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(tarefa));
   }, [tarefa]);
@@ -39,10 +42,12 @@ function App() {
   {
     setInputValue(event.target.value)
   }
+  
   function handlerDeleteTarefa(id: string)
   {
     setTarefa(tarefa.filter(tarefa => tarefa.id !== id));
   }
+
   function handlerConcluirTarefa(id: string)
   {
     const tarefasAtualizadas = tarefa.map(tarefa => {
@@ -54,6 +59,32 @@ function App() {
     setTarefa(tarefasAtualizadas);
   }
 
+  function handlerEditarTarefa(tarefa: Tarefa) {
+    setTarefaEditando(tarefa);
+    setInputValue(tarefa.tarefa);
+  }
+
+  function handlerSalvarEdicao() {
+    if(!tarefaEditando) return;
+     setTarefa(tarefa.map(t => {
+      if(t.id === tarefaEditando.id) {
+        return { ...t, tarefa: inputValue };
+      }
+        return t;
+     }));
+     setTarefaEditando(null);
+     setInputValue('');
+  }
+
+  function handlerOcultarTarefa(id: string)
+  {
+    setTarefa(tarefa.map(t => {
+      if (t.id === id) {
+        return { ...t, isHidden: !t.isHidden };
+      }
+      return t;
+    }));
+  }
 
 
   return (
@@ -66,6 +97,10 @@ function App() {
         inputValue={inputValue}
         handlerDeleteTask={handlerDeleteTarefa}
         handlerConcluirTask={handlerConcluirTarefa}
+        handlerEditarTarefa={handlerEditarTarefa}
+        handlerSalvarEdicao={handlerSalvarEdicao}
+        tarefaEditando={tarefaEditando}
+        handlerOcultarTarefa={handlerOcultarTarefa}
         />
       } />
 

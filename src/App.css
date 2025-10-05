@@ -88,19 +88,14 @@
   color: #808080ff;
 }
 
-.task-item button
+.botao-excluir
 {
-  background-color: #ff4c4cff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-size: 18px;
+  background-color: #ff4c4c; 
+
 }
-.task-item button:hover
+.botao-excluir:hover
 {
-  background-color: #e04343ff;
+  background-color: #e04343;
 }
 
 .link-container
@@ -164,4 +159,50 @@
 {
   color: #808080ff;
   font-size: 24px;
+}
+
+.grupo-botoes
+{
+  display: flex;
+  gap: 10px;
+}
+
+.botao
+{
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.botao-ocultar
+{
+  background-color: #13b89dff;
+
+}
+.botao-ocultar:hover
+{
+  background-color: #0fa891;
+}
+
+.botao-editar
+{
+  background-color: #1eceb0ff; 
+
+}
+.botao-editar:hover
+{
+  background-color: #13b89dff; 
+}
+
+.botao-salvar
+{
+  background-color: #4caf50; 
+  color: white;
+}
+.botao-salvar:hover
+{
+  background-color: #45a049;
 }

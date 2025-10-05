@@ -6,14 +6,23 @@ export default function TodoList({
     handlerInputChange, 
     inputValue, 
     handlerDeleteTask, 
-    handlerConcluirTask }) {
+    handlerConcluirTask, 
+    handlerEditarTarefa,
+    handlerSalvarEdicao,
+    tarefaEditando,
+    handlerOcultarTarefa
+}) {
 
     return(
         <div className="TodoList">
             <h1>Todo List</h1>
             <div className="input-container">
                 <input type="text" value={inputValue} onChange={handlerInputChange} placeholder="O que você precisa fazer? " />
-                <button onClick={() => handlerAdicionaTarefa(inputValue)}>Adicionar</button>
+                {tarefaEditando ? (
+                    <button className="botao botao-salvar" onClick={handlerSalvarEdicao}>Salvar</button>
+                ) : (
+                    <button onClick={() => handlerAdicionaTarefa(inputValue)}>Adicionar</button>
+                )}
             </div>
             <div className="link-container">
                 <h2>Tarefas Concluídas</h2>
@@ -27,7 +36,12 @@ export default function TodoList({
                     <div key={usuario.id} className="task-item">
                         <input onClick={() => handlerConcluirTask(usuario.id)} type="checkbox" checked={usuario.isCompleted} />
                         <span className={usuario.isCompleted ? 'Concluida' : ''}>{usuario.tarefa}</span>
-                        <button onClick={() => handlerDeleteTask(usuario.id)} className="bota-excluir">Excluir</button>
+                        <div className="grupo-botoes">
+                            <button className="botao botao-excluir" onClick={() => handlerDeleteTask(usuario.id)}>Excluir</button>
+                            <button className="botao botao-ocultar" onClick={() => handlerOcultarTarefa(usuario.id)}>Ocultar</button>
+                            <button className="botao botao-editar" onClick={() => handlerEditarTarefa(usuario)}>Editar</button>
+
+                        </div>
                     </div>
                 ))}
             </div>
